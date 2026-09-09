@@ -12,7 +12,7 @@ def sources(identity=True,recalls=True):
     return vin,{"results":rows}
 def mock(vm,identity=True,recalls=True,answer=None,status=200):
     vin,rows=sources(identity,recalls);vm.mock_web(r"vpic\.nhtsa\.dot\.gov",{"status":status,"body":json.dumps(vin)});vm.mock_web(r"api\.nhtsa\.gov/recalls",{"status":status,"body":json.dumps(rows)})
-    vm.mock_llm("ASSET_RECALL_SENTINEL_V1",answer or {"scope_match":"YES","campaigns":["19V182000"]})
+    vm.mock_llm("ASSET_RECALL_SENTINEL_V2",answer or {"scope_match":"YES","campaigns":["19V182000"]})
 def scan(c):return c.request_scan(0,"frontal air bag inflator rupture")
 
 def test_affected_happy_path(direct_vm,direct_deploy):
@@ -45,3 +45,10 @@ def test_invalid_registration(direct_vm,direct_deploy,vin,year,market,digest):
     assert c.get_config()["asset_count"]==0
 def test_urls_are_contract_constructed(direct_vm,direct_deploy):
     source=CONTRACT.read_text(encoding="utf-8");assert "def request_scan(self,asset_id:u256,risk_scope:str)" in source;assert "vpic.nhtsa.dot.gov" in source and "api.nhtsa.gov/recalls" in source
+def test_comparative_disagreement_rolls_back_without_mutation(direct_vm,direct_deploy,monkeypatch):
+    c=deploy(direct_vm,direct_deploy);register(c);sid=scan(c);mock(direct_vm);before=c.get_scan(sid)
+    from genlayer import gl
+    def disagree(*args,**kwargs):raise RuntimeError("validator consensus undetermined")
+    monkeypatch.setattr(gl.eq_principle,"prompt_comparative",disagree)
+    with pytest.raises(RuntimeError,match="consensus undetermined"):c.evaluate_scan(sid)
+    assert c.get_scan(sid)==before

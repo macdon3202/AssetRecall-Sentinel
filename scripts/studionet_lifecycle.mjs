@@ -16,6 +16,8 @@ if(action==='read'){const schema=await reader.getContractSchema(address);console
 else if(action==='register')await send('register','A','register_asset',['1HGCM82633A004352','HONDA','ACCORD',2003n,'US',digest]);
 else if(action==='request')await send('request','B','request_scan',[0n,'frontal air bag inflator rupture']);
 else if(action==='evaluate')await send('evaluate','B','evaluate_scan',[0n]);
+else if(action==='evaluate-refresh')await send('evaluate-refresh','A','evaluate_scan',[1n]);
+else if(action==='unauthorized-retire')await send('unauthorized-retire','B','retire_asset',[0n],true);
 else if(action==='terminal-replay')await send('terminal-replay','B','evaluate_scan',[0n],true);
 else if(action==='refresh')await send('refresh','A','refresh_scan',[0n]);
 else throw Error('UNKNOWN_ACTION');

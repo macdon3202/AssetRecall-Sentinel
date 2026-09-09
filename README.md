@@ -27,6 +27,8 @@ npm run build
 
 ## Deployment status
 
-Studionet deployment: `0x4A35338757456fB4287ca77e4344B87b7ceDf4b9`.
+V1 historical Studionet deployment: `0x4A35338757456fB4287ca77e4344B87b7ceDf4b9`.
 
-The verified live lifecycle registered asset #0, created scan #0 from a second wallet, independently evaluated official NHTSA sources to `AFFECTED`, rejected terminal replay without mutation, and created append-only refresh scan #1. See `docs/LIVE_VERIFICATION.json`. The frontend is configured for this exact deployment.
+The verified V1 lifecycle registered asset #0, created scan #0 from a second wallet, independently evaluated official NHTSA sources to `AFFECTED`, rejected terminal replay without mutation, and evaluated append-only refresh scan #1. See `docs/LIVE_VERIFICATION.json`.
+
+V2 is the current candidate. It fixes the adversarial-audit finding that V1 converted a true comparative-consensus exception into a stored `UNRESOLVED` attempt. V2 deliberately lets disagreement make the transaction `UNDETERMINED`, preserving the complete pre-call state. The frontend is write-disabled until V2 is deployed and verified.

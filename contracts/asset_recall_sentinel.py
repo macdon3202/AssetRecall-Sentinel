@@ -8,7 +8,7 @@ from typing import Any
 from urllib.parse import quote
 from genlayer import *
 
-VERSION="ASSET_RECALL_SENTINEL_V1"; MAX_RECALLS=24; MAX_ATTEMPTS=3
+VERSION="ASSET_RECALL_SENTINEL_V2"; MAX_RECALLS=24; MAX_ATTEMPTS=3
 def req(ok:bool,msg:str):
     if not ok: raise gl.vm.UserError(msg)
 def now(): return int(datetime.now(timezone.utc).timestamp())
@@ -72,8 +72,11 @@ class AssetRecallSentinel(gl.Contract):
                 return canon({"status":"OK" if identity and valid else "IDENTITY_OR_MODEL_INVALID","scope_match":model.get("scope_match","UNKNOWN") if valid else "UNKNOWN","campaigns":picked if valid else [],"identity":identity,"recall_count":len(campaigns),"source_digest":sha(vr.body+b"\x00"+rr.body)})
             except:return canon({"status":"SOURCE_FAILURE","scope_match":"UNKNOWN","campaigns":[]})
         principle="Agree exactly on status, identity, recall_count, source_digest, scope_match, and the canonical sorted set of matching official campaign identifiers. Any material disagreement returns no consensus."
-        try:result=parse(gl.eq_principle.prompt_comparative(observe,principle=principle).encode())
-        except:result={"status":"CONSENSUS_FAILURE","scope_match":"UNKNOWN","campaigns":[]}
+        # Deliberately do not catch comparative-consensus failure. A true
+        # disagreement must make the transaction UNDETERMINED and roll back
+        # attempt, timestamps, digests and state rather than fabricating an
+        # agreed UNRESOLVED observation.
+        result=parse(gl.eq_principle.prompt_comparative(observe,principle=principle).encode())
         s.attempt+=u256(1);s.evaluated_at=u256(now());s.source_digest=str(result.get("source_digest",""));s.matched_campaigns=canon(result.get("campaigns",[]))
         if result.get("status")!="OK":s.state="UNRESOLVED";s.reason=str(result.get("status","UNRESOLVED"))
         elif int(result.get("recall_count",0))==0:s.state="NOT_AFFECTED";s.reason="NO_OFFICIAL_RECALLS"

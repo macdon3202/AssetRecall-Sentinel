@@ -8,7 +8,9 @@
     "request_scan":"0xffdc129804c8f9007eb624ad1c753a6bf947e7890f2c66bf478dafff36775705",
     "evaluate_scan":"0x23ff699260e952f3354f22aac703538b045ea0b81e7c813e5fd4092902f8697c",
     "terminal_replay":"0x992e9cd8e8d8623627489d69cdcd599735cefe63d922abe613ab3dbc0aed4b2c",
-    "refresh_scan":"0xdf337ce5eb779c260dd35be79baaeed5f488e6c80285dff95472530ff540c316"
+    "refresh_scan":"0xdf337ce5eb779c260dd35be79baaeed5f488e6c80285dff95472530ff540c316",
+    "unauthorized_retire":"0x56c48a4fc4c3d5a6bc43bd1096f75b8cd7d2f0b473b1dccb5003f96445be7446",
+    "evaluate_refreshed_scan":"0xc619aa88173113e43de37f89887f94f4b78301e2b6f8336a73227916e9d3299b"
   },
   "observed_results": {
     "positive_execution":"SUCCESS",
@@ -21,7 +23,12 @@
     "terminal_replay_reason":"SCAN_NOT_RETRYABLE",
     "post_replay_state":"AFFECTED",
     "refresh_scan_id":1,
-    "refresh_supersedes":0
+    "refresh_supersedes":0,
+    "refresh_finding":"AFFECTED",
+    "refresh_source_digest":"462d76ed19c1df5d5bc46aacececd4d3de8cd0d3027679bd64e61c6265067672",
+    "unauthorized_retire_execution":"ERROR",
+    "unauthorized_retire_reason":"OWNER_ONLY",
+    "asset_state_after_unauthorized_call":"ACTIVE"
   },
-  "limitations":["AFFECTED means the official recall language matched the sealed risk scope; it does not prove this individual vehicle remains unrepaired.","The VIN is public in V1.","Config and ABI parity are verified; deploy-receipt source-byte extraction is not claimed without a deployment transaction receipt."]
+  "limitations":["AFFECTED means the official recall language matched the sealed risk scope; it does not prove this individual vehicle remains unrepaired.","The VIN is public in V1.","Config and ABI parity are verified; deploy-receipt source-byte extraction is not claimed without a deployment transaction receipt.","V1 caught comparative consensus exceptions and could consume an UNRESOLVED attempt. It is superseded by the V2 candidate and must not be presented as conflict-safe."]
 }
