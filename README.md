@@ -27,4 +27,6 @@ npm run build
 
 ## Deployment status
 
-Contract deployment is pending. Keep `VITE_CONTRACT_ADDRESS` empty until the exact source is deployed and its config/source parity are verified. No live recall finding is claimed yet.
+Studionet deployment: `0x4A35338757456fB4287ca77e4344B87b7ceDf4b9`.
+
+The verified live lifecycle registered asset #0, created scan #0 from a second wallet, independently evaluated official NHTSA sources to `AFFECTED`, rejected terminal replay without mutation, and created append-only refresh scan #1. See `docs/LIVE_VERIFICATION.json`. The frontend is configured for this exact deployment.

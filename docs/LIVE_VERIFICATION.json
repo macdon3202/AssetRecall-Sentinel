@@ -1,0 +1,27 @@
+{
+  "network": "studionet",
+  "contract": "0x4A35338757456fB4287ca77e4344B87b7ceDf4b9",
+  "config_readback": {"version":"ASSET_RECALL_SENTINEL_V1","authority":"NHTSA_VPIC_AND_RECALLS","evidence_urls":"CONTRACT_CONSTRUCTED","max_attempts":3},
+  "fixture": {"asset_id":0,"vin":"1HGCM82633A004352","make":"HONDA","model":"ACCORD","model_year":2003,"market":"US","metadata_digest":"1d7d70d6e911c4c33ab3cf1a6a67e8c00967f64e778fbcb8f3ff736e4fd896fc","risk_scope":"frontal air bag inflator rupture"},
+  "transactions": {
+    "register_asset":"0x01fa4da19fdeef9256cb1da761e325370f46e0208b67e5a63f207e017268674d",
+    "request_scan":"0xffdc129804c8f9007eb624ad1c753a6bf947e7890f2c66bf478dafff36775705",
+    "evaluate_scan":"0x23ff699260e952f3354f22aac703538b045ea0b81e7c813e5fd4092902f8697c",
+    "terminal_replay":"0x992e9cd8e8d8623627489d69cdcd599735cefe63d922abe613ab3dbc0aed4b2c",
+    "refresh_scan":"0xdf337ce5eb779c260dd35be79baaeed5f488e6c80285dff95472530ff540c316"
+  },
+  "observed_results": {
+    "positive_execution":"SUCCESS",
+    "positive_consensus":"Accepted",
+    "finding":"AFFECTED",
+    "reason":"OFFICIAL_RECALL_SCOPE_MATCH",
+    "source_digest":"462d76ed19c1df5d5bc46aacececd4d3de8cd0d3027679bd64e61c6265067672",
+    "matched_campaigns":["19V182000","19V499000","19V501000","17V220000","15V320000","14V700000","15V370000","14V353000"],
+    "terminal_replay_execution":"ERROR",
+    "terminal_replay_reason":"SCAN_NOT_RETRYABLE",
+    "post_replay_state":"AFFECTED",
+    "refresh_scan_id":1,
+    "refresh_supersedes":0
+  },
+  "limitations":["AFFECTED means the official recall language matched the sealed risk scope; it does not prove this individual vehicle remains unrepaired.","The VIN is public in V1.","Config and ABI parity are verified; deploy-receipt source-byte extraction is not claimed without a deployment transaction receipt."]
+}

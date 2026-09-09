@@ -3,7 +3,7 @@
   "contract_source": "contracts/asset_recall_sentinel.py",
   "contract_sha256": "30e6db645fc84866b5638392297ae58902c2bd011b508f108d4ffea01a2ce752",
   "constructor_args": [],
-  "deployment": "PENDING",
+  "deployment": "0x4A35338757456fB4287ca77e4344B87b7ceDf4b9",
   "checks": {
     "genvm_lint": "PASS",
     "genvm_validation": "PASS_9_METHODS_3_VIEW_6_WRITE",
