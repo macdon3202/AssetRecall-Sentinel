@@ -34,3 +34,5 @@ The verified V1 lifecycle registered asset #0, created scan #0 from a second wal
 V2 is the current verified deployment: `0xda6B9aD1A9541b76dd542ca99a1bbC11E387b784`. It fixes the adversarial-audit finding that V1 converted a true comparative-consensus exception into a stored `UNRESOLVED` attempt. V2 deliberately lets disagreement make the transaction `UNDETERMINED`, preserving the complete pre-call state.
 
 The V2 live lifecycle includes a successful `AFFECTED` result, unauthorized-retirement rejection, terminal-replay rejection, append-only refresh, and two real comparative-consensus disagreements. Both disagreement transactions ended `UNDETERMINED`; authoritative readback proved the refreshed scan remained `REQUESTED` with attempt `0` and no derived evidence. See `docs/LIVE_VERIFICATION_V2.json`.
+
+Production frontend: https://asset-recall-sentinel.pages.dev

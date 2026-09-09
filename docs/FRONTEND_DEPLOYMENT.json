@@ -1,0 +1,15 @@
+{
+  "provider": "Cloudflare Pages",
+  "project": "asset-recall-sentinel",
+  "production_url": "https://asset-recall-sentinel.pages.dev",
+  "deployment_url": "https://dbe819f7.asset-recall-sentinel.pages.dev",
+  "source_commit": "6353a4e",
+  "contract": "0xda6B9aD1A9541b76dd542ca99a1bbC11E387b784",
+  "verification": {
+    "production_http_status": 200,
+    "production_title_present": true,
+    "production_bundle": "/assets/index-JCRPJt6N.js",
+    "contract_address_embedded": true
+  },
+  "note": "The production domain and served JavaScript bundle were read back after deployment."
+}
