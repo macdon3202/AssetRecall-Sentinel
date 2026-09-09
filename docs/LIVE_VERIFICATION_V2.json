@@ -1,0 +1,67 @@
+{
+  "network": "studionet",
+  "contract": "0xda6B9aD1A9541b76dd542ca99a1bbC11E387b784",
+  "version": "ASSET_RECALL_SENTINEL_V2",
+  "source_sha256": "2098416b2703337def6c5fcc3e22a5df9716decce6d55ab4d16a92c193e5adf5",
+  "fixture": {
+    "asset_id": 0,
+    "vin": "1HGCM82633A004352",
+    "make": "HONDA",
+    "model": "ACCORD",
+    "model_year": 2003,
+    "risk_scope": "frontal air bag inflator rupture"
+  },
+  "transactions": {
+    "register_asset": "0xee5487b0cdb225046b76a5a77015caf7069aa9c0add6dd694dfa28041bdb4b58",
+    "request_scan": "0x8288d110c7adf786402e992eb0142ded1f3c04784140cfb521480ea74df8a5d8",
+    "evaluate_scan": "0x549a371c24e27a2fac4c95071e37b898658b75592869b89950dd64ae4a98aa88",
+    "unauthorized_retire": "0x0988c0a51a33b15fcb1947be1d761b7cdb7384293c35b6f98ad9041347a213f8",
+    "terminal_replay": "0xeb8b588241b45b5aa09e90529542fe65d79e7e20c7f24bcada9559281932d2eb",
+    "refresh_scan": "0xc10d8de04ba855ffaca6e651a86962c9af4033e713549d18bcd8a2e778819ff7",
+    "refresh_evaluation_disagreement_1": "0x96bb912b5e9905d1997f8cca1517c4a18dccda02643db4c8a1281de03bda9343",
+    "refresh_evaluation_disagreement_2": "0x192ed66f2dd6ecb87a0744296a7444344e12a1363d2fc26c93496ea1e30bb86f"
+  },
+  "verified_results": {
+    "scan_0": {
+      "execution": "SUCCESS",
+      "consensus": "Accepted",
+      "state": "AFFECTED",
+      "reason": "OFFICIAL_RECALL_SCOPE_MATCH",
+      "attempt": 1,
+      "source_digest": "462d76ed19c1df5d5bc46aacececd4d3de8cd0d3027679bd64e61c6265067672",
+      "matched_campaigns": ["19V499000", "19V501000", "17V220000", "15V320000", "14V700000", "15V370000", "14V353000"]
+    },
+    "unauthorized_retirement": {
+      "execution": "ERROR",
+      "reason": "OWNER_ONLY",
+      "asset_state_after_call": "ACTIVE"
+    },
+    "terminal_replay": {
+      "execution": "ERROR",
+      "reason": "SCAN_NOT_RETRYABLE",
+      "scan_0_state_after_call": "AFFECTED"
+    },
+    "refresh": {
+      "scan_id": 1,
+      "supersedes": 0,
+      "initial_state": "REQUESTED"
+    },
+    "live_disagreement": {
+      "attempts": 2,
+      "transaction_status": "UNDETERMINED",
+      "authoritative_state_after_each_attempt": "REQUESTED",
+      "attempt_counter_after_each_attempt": 0,
+      "evaluated_at_after_each_attempt": 0,
+      "source_digest_after_each_attempt": "",
+      "matched_campaigns_after_each_attempt": [],
+      "prior_scan_unchanged": true,
+      "conclusion": "PASS_FAIL_CLOSED_AND_RETRY_SAFE"
+    }
+  },
+  "limitations": [
+    "Scan #1 has not reached a semantic verdict because two live validator sets disagreed; no verdict is claimed.",
+    "AFFECTED means official recall language matched the sealed risk scope; it does not prove the individual vehicle remains unrepaired.",
+    "The VIN is public on-chain.",
+    "The source hash records the reviewed local V2 source; deploy-receipt byte extraction is not claimed."
+  ]
+}

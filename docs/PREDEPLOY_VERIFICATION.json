@@ -3,7 +3,7 @@
   "contract_source": "contracts/asset_recall_sentinel.py",
   "contract_sha256": "2098416b2703337def6c5fcc3e22a5df9716decce6d55ab4d16a92c193e5adf5",
   "constructor_args": [],
-  "deployment": "PENDING_V2",
+  "deployment": "0xda6B9aD1A9541b76dd542ca99a1bbC11E387b784",
   "checks": {
     "genvm_lint": "PASS",
     "genvm_validation": "PASS_9_METHODS_3_VIEW_6_WRITE",
@@ -23,7 +23,7 @@
   },
   "limitations": [
     "Source reachability from this machine does not prove validator reachability after deployment.",
-    "No live GenLayer scan result is claimed before deployment.",
+    "The V2 live lifecycle and authoritative readbacks are recorded in docs/LIVE_VERIFICATION_V2.json.",
     "The V1 VIN is public on-chain and the finding is not a repair, insurance, ownership, or legal determination."
   ]
 }
